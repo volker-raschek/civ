@@ -5,7 +5,7 @@ go 1.17
 require (
 	git.cryptic.systems/volker.raschek/dockerutils v0.2.0
 	github.com/Masterminds/semver/v3 v3.2.1
-	github.com/spf13/cobra v1.3.0
+	github.com/spf13/cobra v1.8.0
 	gopkg.in/yaml.v2 v2.4.0
 )
 
@@ -18,7 +18,7 @@ require (
 	github.com/docker/go-units v0.4.0 // indirect
 	github.com/gogo/protobuf v1.3.2 // indirect
 	github.com/golang/protobuf v1.5.2 // indirect
-	github.com/inconshreveable/mousetrap v1.0.0 // indirect
+	github.com/inconshreveable/mousetrap v1.1.0 // indirect
 	github.com/opencontainers/go-digest v1.0.0 // indirect
 	github.com/opencontainers/image-spec v1.0.2-0.20190823105129-775207bd45b6 // indirect
 	github.com/pkg/errors v0.9.1 // indirect
