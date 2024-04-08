@@ -4,7 +4,7 @@ go 1.17
 
 require (
 	git.cryptic.systems/volker.raschek/dockerutils v0.2.0
-	github.com/Masterminds/semver/v3 v3.1.1
+	github.com/Masterminds/semver/v3 v3.2.1
 	github.com/spf13/cobra v1.3.0
 	gopkg.in/yaml.v2 v2.4.0
 )
