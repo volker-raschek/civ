@@ -122,61 +122,6 @@ trigger:
 ---
 kind: pipeline
 type: docker
-name: dry-run-arm-v7
-
-platform:
-  os: linux
-  arch: arm
-
-steps:
-- name: build
-  image: docker.io/plugins/docker:latest
-  settings:
-    dockerfile: Dockerfile
-    auto_tag: false
-    dry_run: true
-    tags: latest-arm-v7
-    repo: volkerraschek/civ
-    no_cache: true
-
-- name: notify
-  image: docker.io/drillster/drone-email:latest
-  environment:
-    PLUGIN_HOST:
-      from_secret: smtp_host
-    PLUGIN_USERNAME:
-      from_secret: smtp_username
-    PLUGIN_PASSWORD:
-      from_secret: smtp_password
-    PLUGIN_FROM:
-      from_secret: smtp_mail_address
-  volumes:
-  - name: docker_socket
-    path: /var/run/docker.sock
-  when:
-    status:
-    - changed
-    - failure
-
-volumes:
-- name: docker_socket
-  host:
-    path: /var/run/docker.sock
-
-depends_on:
-- unit-test
-
-trigger:
-  branch:
-    exclude:
-    - master
-  event:
-  - pull_request
-  - push
-
----
-kind: pipeline
-type: docker
 name: dry-run-arm64-v8
 
 platform:
@@ -266,65 +211,6 @@ steps:
       from_secret: smtp_password
     PLUGIN_FROM:
       from_secret: smtp_mail_address
-  when:
-    status:
-    - changed
-    - failure
-
-volumes:
-- name: docker_socket
-  host:
-    path: /var/run/docker.sock
-
-depends_on:
-- unit-test
-
-trigger:
-  branch:
-  - master
-  event:
-  - cron
-  - push
-  repo:
-  - volker.raschek/civ
-
----
-kind: pipeline
-type: docker
-name: latest-arm-v7
-
-platform:
-  os: linux
-  arch: arm
-
-steps:
-- name: build
-  image: docker.io/plugins/docker:latest
-  settings:
-    dockerfile: Dockerfile
-    auto_tag: false
-    tags: latest-arm-v7
-    repo: volkerraschek/civ
-    username:
-      from_secret: container_image_registry_user
-    password:
-      from_secret: container_image_registry_password
-    no_cache: true
-
-- name: notify
-  image: docker.io/drillster/drone-email:latest
-  environment:
-    PLUGIN_HOST:
-      from_secret: smtp_host
-    PLUGIN_USERNAME:
-      from_secret: smtp_username
-    PLUGIN_PASSWORD:
-      from_secret: smtp_password
-    PLUGIN_FROM:
-      from_secret: smtp_mail_address
-  volumes:
-  - name: docker_socket
-    path: /var/run/docker.sock
   when:
     status:
     - changed
@@ -445,7 +331,6 @@ steps:
 
 depends_on:
 - latest-amd64
-- latest-arm-v7
 - latest-arm64-v8
 
 trigger:
@@ -473,61 +358,6 @@ steps:
     dockerfile: Dockerfile
     auto_tag: true
     auto_tag_suffix: amd64
-    repo: volkerraschek/civ
-    username:
-      from_secret: container_image_registry_user
-    password:
-      from_secret: container_image_registry_password
-    build_args:
-    - VERSION=${DRONE_TAG}
-    no_cache: true
-  volumes:
-  - name: docker_socket
-    path: /var/run/docker.sock
-
-- name: notify
-  image: docker.io/drillster/drone-email:latest
-  environment:
-    PLUGIN_HOST:
-      from_secret: smtp_host
-    PLUGIN_USERNAME:
-      from_secret: smtp_username
-    PLUGIN_PASSWORD:
-      from_secret: smtp_password
-    PLUGIN_FROM:
-      from_secret: smtp_mail_address
-  when:
-    status:
-    - changed
-    - failure
-
-volumes:
-- name: docker_socket
-  host:
-    path: /var/run/docker.sock
-
-trigger:
-  event:
-  - tag
-  repo:
-  - volker.raschek/civ
-
----
-kind: pipeline
-type: docker
-name: tagged-arm-v7
-
-platform:
-  os: linux
-  arch: arm
-
-steps:
-- name: build
-  image: docker.io/plugins/docker:latest
-  settings:
-    dockerfile: Dockerfile
-    auto_tag: true
-    auto_tag_suffix: arm-v7
     repo: volkerraschek/civ
     username:
       from_secret: container_image_registry_user
@@ -661,7 +491,6 @@ steps:
 
 depends_on:
 - tagged-amd64
-- tagged-arm-v7
 - tagged-arm64-v8
 
 trigger:
