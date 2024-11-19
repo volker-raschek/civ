@@ -1,10 +1,12 @@
 module git.cryptic.systems/volker.raschek/civ
 
-go 1.17
+go 1.21
+
+toolchain go1.23.3
 
 require (
 	git.cryptic.systems/volker.raschek/dockerutils v0.2.0
-	github.com/Masterminds/semver/v3 v3.2.1
+	github.com/Masterminds/semver/v3 v3.3.1
 	github.com/spf13/cobra v1.8.1
 	gopkg.in/yaml.v2 v2.4.0
 )
