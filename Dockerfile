@@ -11,7 +11,7 @@ RUN set -ex && \
     apk add git make && \
     make install VERSION=${VERSION} DESTDIR=/civ PREFIX=/usr
 
-FROM docker.io/library/alpine:3.19
+FROM docker.io/library/alpine:3.21
 
 COPY --from=build /civ /
 
