@@ -50,7 +50,7 @@ steps:
 - name: unit-test
   commands:
   - go test -v ./...
-  image: docker.io/library/golang:1.23
+  image: docker.io/library/golang:1.24
   resources:
     limits:
       cpu: 250
