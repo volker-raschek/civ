@@ -8,7 +8,8 @@ require (
 	git.cryptic.systems/volker.raschek/dockerutils v0.2.0
 	github.com/Masterminds/semver/v3 v3.3.1
 	github.com/spf13/cobra v1.8.1
-	gopkg.in/yaml.v2 v2.4.0
+	gopkg.in/yaml.v2 v2.2.3
+	gopkg.in/yaml.v3 v3.0.1
 )
 
 require (
