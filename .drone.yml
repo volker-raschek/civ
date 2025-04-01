@@ -10,7 +10,7 @@ steps:
 - name: markdown lint
   commands:
   - markdownlint *.md
-  image: docker.io/volkerraschek/markdownlint:0.41.0
+  image: docker.io/volkerraschek/markdownlint:0.44.0
   resources:
     limits:
       cpu: 50
@@ -50,7 +50,7 @@ steps:
 - name: unit-test
   commands:
   - go test -v ./...
-  image: docker.io/library/golang:1.23
+  image: docker.io/library/golang:1.24
   resources:
     limits:
       cpu: 250
