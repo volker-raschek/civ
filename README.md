@@ -1,12 +1,11 @@
 # civ - container image verifier
 
-The container image verifier - `civ` checks based on constraints container
-images. For this purpose is a config file required which contains the constraint
-definitions. The config file must be passed as argument to `civ`. `civ` writes
+The container image verifier - `civ` checks based on constraints container images. For this purpose is a config file
+required which contains the constraint definitions. The config file must be passed as argument to `civ`. `civ` writes
 the results into a separate file.
 
-Currently is `json` and `yaml` supported. As default will be `yaml` used.
-Optionally can be specified via the second arg the result file.
+Currently is `json` and `yaml` supported. As default will be `yaml` used. Optionally can be specified via the second arg
+the result file.
 
 `civ config.yaml [ result.yaml ]`
 
@@ -16,12 +15,12 @@ Optionally can be specified via the second arg the result file.
 
 #### Exists
 
-Verify if container image `volkerraschek/civ:latest` has label
+Verify if container image `git.cryptic.systems/volker.raschek/civ:latest` has label
 `org.opencontainers.image.documentation` defined.
 
 ```yaml
 images:
-  volkerraschek/civ:latest:
+  git.cryptic.systems/volker.raschek/civ:latest:
     labelConstraints:
       org.opencontainers.image.documentation:
         exists: true
@@ -29,25 +28,24 @@ images:
 
 #### Compare Semantic Versioning
 
-Verify, if the container image `volkerraschek/civ:latest` has label
-`org.opencontainers.image.version` defined and has a greater version than
-`2.5.7`.
+Verify, if the container image `git.cryptic.systems/volker.raschek/civ:latest` has label
+`org.opencontainers.image.version` defined and has a greater version than `2.5.7`.
 
 ```yaml
 images:
-  volkerraschek/civ:latest:
+  git.cryptic.systems/volker.raschek/civ:latest:
     labelConstraints:
       org.opencontainers.image.version:
         compareSemver:
           greaterThan: 2.5.7
 ```
 
-Alternatively, can `lessThan` and `equal` be used. For example to define a range
-of `2.5.7~2.8.4` with `lessThan` and `greaterThan`.
+Alternatively, can `lessThan` and `equal` be used. For example to define a range of `2.5.7~2.8.4` with `lessThan` and
+`greaterThan`.
 
 ```yaml
 images:
-  volkerraschek/civ:latest:
+  git.cryptic.systems/volker.raschek/civ:latest:
     labelConstraints:
       org.opencontainers.image.version:
         compareSemver:
@@ -57,13 +55,12 @@ images:
 
 #### Compare String
 
-Verify, if the container image `volkerraschek/civ:latest` has label
-`org.opencontainers.image.documentation` defined and the value starts with
-`https://` and ends with `README.md`.
+Verify, if the container image `git.cryptic.systems/volker.raschek/civ:latest` has label
+`org.opencontainers.image.documentation` defined and the value starts with `https://` and ends with `README.md`.
 
 ```yaml
 images:
-  volkerraschek/civ:latest:
+  git.cryptic.systems/volker.raschek/civ:latest:
     labelConstraints:
       org.opencontainers.image.documentation:
         compareString:
@@ -71,18 +68,16 @@ images:
           hasSuffix: "README.md"
 ```
 
-Alternatively, can be `equal` used to compare the value of a label with a
-expected value.
+Alternatively, can be `equal` used to compare the value of a label with a expected value.
 
 #### Count labels with corresponding prefix, suffix or match pattern
 
-No more than 3 labels with the prefix `org.opencontainers` and exactly one
-labels with the suffix `version` may be defined for the image
-`volkerraschek/civ:latest`.
+No more than 3 labels with the prefix `org.opencontainers` and exactly one labels with the suffix `version` may be
+defined for the image `git.cryptic.systems/volker.raschek/civ:latest`.
 
 ```yaml
 images:
-  volkerraschek/civ:latest:
+  git.cryptic.systems/volker.raschek/civ:latest:
     labelConstraints:
       org.opencontainers%:
         count:

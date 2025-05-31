@@ -1,6 +1,3 @@
-civ*
+civ
 coverage.txt
-config*.yml
-config*.yaml
-*_result.yml
-*_result.yaml
+dist
