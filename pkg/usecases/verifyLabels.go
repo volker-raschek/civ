@@ -14,8 +14,8 @@ import (
 // ContainerRuntime is an interface for different container runtimes to return labels
 // based on their full qualified container image name. For example:
 //
-//   imageLabels, err := Load(ctx, "docker.io/library/alpine:latest")
-//   imageLabels, err := Load(ctx, "docker.io/library/busybox:latest")
+//	imageLabels, err := Load(ctx, "docker.io/library/alpine:latest")
+//	imageLabels, err := Load(ctx, "docker.io/library/busybox:latest")
 type ContainerRuntime interface {
 	GetImageLabels(ctx context.Context, name string) (map[string]string, error)
 }
@@ -182,7 +182,7 @@ func labelCompareSemver(compareSemver *domain.LabelConstraintCompareSemver, pars
 }
 
 func labelCompareString(compareString *domain.LabelConstraintCompareString, labelValue string) bool {
-	var majorState bool = true
+	var majorState = true
 
 	// Equal
 	if compareString.Equal != "" {
@@ -224,7 +224,7 @@ func labelCompareString(compareString *domain.LabelConstraintCompareString, labe
 }
 
 func labelCount(re *regexp.Regexp, labelConstraintCounter *domain.LabelConstraintCounter, labels map[string]string) bool {
-	var majorState bool = true
+	var majorState = true
 
 	var i uint = 0
 	for key := range labels {

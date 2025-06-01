@@ -65,7 +65,7 @@ func (jr *JSONReader) ReadFile() (*domain.Config, error) {
 	if err != nil {
 		return nil, err
 	}
-	defer f.Close()
+	defer func() { _ = f.Close() }()
 
 	return jr.read(f)
 }
@@ -79,7 +79,7 @@ func (jw *JSONWriter) WriteFile(config *domain.Config) error {
 	if err != nil {
 		return err
 	}
-	defer func() { f.Close() }()
+	defer func() { _ = f.Close() }()
 	return jw.write(f, config)
 }
 
@@ -103,7 +103,7 @@ func (yr *YAMLReader) ReadFile() (*domain.Config, error) {
 	if err != nil {
 		return nil, err
 	}
-	defer f.Close()
+	defer func() { _ = f.Close() }()
 
 	return yr.read(f)
 }
@@ -129,7 +129,7 @@ func (yw *YAMLWriter) WriteFile(config *domain.Config) error {
 	if err != nil {
 		return err
 	}
-	defer func() { f.Close() }()
+	defer func() { _ = f.Close() }()
 	return yw.write(f, config)
 }
 
