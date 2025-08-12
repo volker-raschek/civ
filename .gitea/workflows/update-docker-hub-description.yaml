@@ -8,8 +8,7 @@ on:
 
 jobs:
   update-description-on-hub-docker-io:
-    runs-on:
-    - ubuntu-latest
+    runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4.3.0
     - uses: peter-evans/dockerhub-description@v4.0.2
