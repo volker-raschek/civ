@@ -2,7 +2,7 @@ module git.cryptic.systems/volker.raschek/civ
 
 go 1.24
 
-toolchain go1.25.2
+toolchain go1.25.3
 
 require (
 	git.cryptic.systems/volker.raschek/dockerutils v0.2.0
