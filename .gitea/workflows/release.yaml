@@ -28,7 +28,7 @@ jobs:
         GOPROXY: ${{ vars.GOPROXY }}
       uses: goreleaser/goreleaser-action@v7.2.2
       with:
-        version: v2.15.4 # renovate: datasource=github-releases depName=goreleaser/goreleaser
+        version: v2.16.0 # renovate: datasource=github-releases depName=goreleaser/goreleaser
         args: release --clean
 
   sync-to-hub-docker-io:
